@@ -1,25 +1,54 @@
 package com.ninja.ninjapay.models;
 
-import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "user")
 public class User {
-    private String id;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)    
+    private Long id;
+    
     private String uname;
     private String fname;
     private String lname;
     private String mobile;
     private String email;
+    private String password;
+    @Column(name = "baccount")
     private String bankAccount;
+    @Column(name = "validated")
     private Boolean validBankAccount;
+    @Column(name = "linked")
     private Boolean mobileLink;
-    private Date accountCreated;
-    private Date lastModified;
+    
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+//    @Column(name = "created")
+//    private Timestamp accountCreated;
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+//    @Column(name = "modifiedon")
+//    private Timestamp lastModified;
     
     /**
      * @return the id
      */
-    public String getId() {
+    public Long getId() {
         return id;
+    }
+    /**
+     * @return the uname
+     */
+    public String getUname() {
+        return uname;
     }
     /**
      * @return the fname
@@ -46,6 +75,12 @@ public class User {
         return email;
     }
     /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+    /**
      * @return the bankAccount
      */
     public String getBankAccount() {
@@ -63,23 +98,29 @@ public class User {
     public Boolean getMobileLink() {
         return mobileLink;
     }
-    /**
-     * @return the accountCreated
-     */
-    public Date getAccountCreated() {
-        return accountCreated;
-    }
-    /**
-     * @return the lastModified
-     */
-    public Date getLastModified() {
-        return lastModified;
-    }
+//    /**
+//     * @return the accountCreated
+//     */
+//    public Timestamp getAccountCreated() {
+//        return accountCreated;
+//    }
+//    /**
+//     * @return the lastModified
+//     */
+//    public Timestamp getLastModified() {
+//        return lastModified;
+//    }
     /**
      * @param id the id to set
      */
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+    /**
+     * @param uname the uname to set
+     */
+    public void setUname(String uname) {
+        this.uname = uname;
     }
     /**
      * @param fname the fname to set
@@ -106,6 +147,12 @@ public class User {
         this.email = email;
     }
     /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    /**
      * @param bankAccount the bankAccount to set
      */
     public void setBankAccount(String bankAccount) {
@@ -123,17 +170,21 @@ public class User {
     public void setMobileLink(Boolean mobileLink) {
         this.mobileLink = mobileLink;
     }
-    /**
-     * @param accountCreated the accountCreated to set
-     */
-    public void setAccountCreated(Date accountCreated) {
-        this.accountCreated = accountCreated;
+//    /**
+//     * @param accountCreated the accountCreated to set
+//     */
+//    public void setAccountCreated(Timestamp accountCreated) {
+//        this.accountCreated = accountCreated;
+//    }
+//    /**
+//     * @param lastModified the lastModified to set
+//     */
+//    public void setLastModified(Timestamp lastModified) {
+//        this.lastModified = lastModified;
+//    }    
+    
+    public String getFullname() {
+        return getFname() + " " + getLname();
     }
-    /**
-     * @param lastModified the lastModified to set
-     */
-    public void setLastModified(Date lastModified) {
-        this.lastModified = lastModified;
-    }    
 
 }
