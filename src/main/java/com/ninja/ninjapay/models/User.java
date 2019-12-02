@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class User {
     private String id;
+    private String uname;
     private String fname;
     private String lname;
     private String mobile;
