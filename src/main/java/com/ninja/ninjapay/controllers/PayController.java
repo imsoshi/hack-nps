@@ -45,7 +45,7 @@ public class PayController {
             msgs.put("Status", "No");
             msgs.put("Name", user.getFullname());
             msgs.put("Mobile", user.getMobile());
-            msgs.put("Message", "Mobile number owner had not link an account as Ninja Pay Ready.");
+            msgs.put("Message", "Mobile number is not yet link to a bank account as Ninja Pay Ready.");
         } else {
             msgs.put("Status", "No");
             msgs.put("Message", "Mobile number is not yet Ninja Pay Ready - use the link below to signup.");
