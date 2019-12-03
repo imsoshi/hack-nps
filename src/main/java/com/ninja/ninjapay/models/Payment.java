@@ -2,14 +2,34 @@ package com.ninja.ninjapay.models;
 
 import java.math.BigInteger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.ninja.ninjapay.api.FfdcApi;
+
+
 public class Payment {
-    
+
     private User user;
     private BigInteger amount;
+    private String ccy;
     private String status;
     private String msg;
     private String scheme;
     private String paymentID;
+    
+    
+    public Payment(User user, String amount, String ccy) {
+    	this.user = user;
+    	this.amount = new BigInteger(amount);
+    	this.ccy = ccy;
+    }
+    
+    public String initiate(FfdcApi api) {
+    	setScheme(api.getSchemeAPI());
+    	
+    	return api.getSchemeAPI();
+    }
     
     /**
      * @return the user

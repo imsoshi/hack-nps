@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "ffdcapi",
+    "type": "java.lang.String",
+    "description": "A description for 'ffdcapi'"
+  },
+  {
+    "name": "finastra",
+    "type": "java.lang.String",
+    "description": "A description for 'finastra'"
+  },
+  {
+    "name": "oauth2.callbackPath",
+    "type": "java.lang.String",
+    "description": "A description for 'oauth2.callbackPath'"
+  },
+  {
+    "name": "oauth2.jwkSetUri",
+    "type": "java.lang.String",
+    "description": "A description for 'oauth2.jwkSetUri'"
+  },
+  {
+    "name": "ffdcapi.url",
+    "type": "java.lang.String",
+    "description": "A description for 'ffdcapi.url'"
+  },
+  {
+    "name": "ffdcapi.baseUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'ffdcapi.baseUrl'"
+  },
+  {
+    "name": "ffdcapi.loginUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'ffdcapi.loginUrl'"
+  },
+  {
+    "name": "auth",
+    "type": "java.lang.String",
+    "description": "A description for 'auth'"
+  }
+]}

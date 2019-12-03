@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ninja.ninjapay.api.FfdcApi;
 import com.ninja.ninjapay.models.Payment;
 import com.ninja.ninjapay.models.User;
 import com.ninja.ninjapay.repositories.UserRepository;
@@ -23,6 +28,9 @@ public class PayController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+	private FfdcApi api;
+    
     @GetMapping("/r/{mobile}")
     public HashMap<String, String> getMobile(@PathVariable("mobile") String mobile) {
         User user = userRepository.findByMobile(mobile);
@@ -46,10 +54,15 @@ public class PayController {
         return msgs;
     }
     
-    @PostMapping
+    @PostMapping (consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public void initiatePay(@RequestBody Payment pay) {
-        //Todo
+    public String initiatePay(@RequestBody String body) throws JsonMappingException, JsonProcessingException {
+    	JsonNode root = new ObjectMapper().readTree(body);
+    	User user = userRepository.findByMobile(root.findValue("mobile").textValue());
+//    	System.out.println(user.getMobile());
+    	Payment pay = new Payment(user, root.findValue("amount").textValue(), root.findValue("ccy").textValue());
+    	System.out.println(pay.initiate(api));
+        return "";
     }
     
 }
